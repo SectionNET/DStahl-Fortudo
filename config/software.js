@@ -16,7 +16,7 @@ function read(args) {
 
   const fileContents = {
     "log 0001": `
-<pre><strong>LOG 0001 — DATE: JAN 12, 2019 – 07:00</strong>
+<pre><strong>LOG 0001</strong>
 <span class="desync">Core Temp:</span> <strong>198°C</strong>
 <span class="desync">Load Capacity:</span> <strong>64%</strong>
 <span class="hack-reveal">Notes:</span>
@@ -24,7 +24,7 @@ System stable. Early warming curve shows slight delay on tertiary coolant loop, 
 Minor corrosion visible on valve 3B. Routine.</pre>`,
 
     "log 0007": `
-<pre><strong>LOG 0007 — DATE: JAN 17, 2019 – 07:00</strong>
+<pre><strong>LOG 0007</strong>
 <span class="desync">Core Temp:</span> <strong>232°C</strong>
 <span class="desync">Load Capacity:</span> <strong>72%</strong>
 <span class="hack-reveal">Notes:</span>
@@ -33,7 +33,7 @@ Recommending we pull MacCready off drill routing rotation—he’s pushing cycle
 Will submit note to Roylott.</pre>`,
 
     "log 0015": `
-<pre><strong>LOG 0015 — DATE: JAN 24, 2019 – 07:00</strong>
+<pre><strong>LOG 0015</strong>
 <span class="desync">Core Temp:</span> <strong>246°C</strong>
 <span class="desync">Load Capacity:</span> <strong>79%</strong>
 <span class="hack-reveal">Notes:</span>
@@ -42,7 +42,7 @@ Cooling loop 2B required manual override restart.
 MacCready insists “the system can take it”—I’m less sure.</pre>`,
 
     "log 0020": `
-<pre><strong>LOG 0020 — DATE: JAN 28, 2019 – 07:00</strong>
+<pre><strong>LOG 0020</strong>
 <span class="desync">Core Temp:</span> <strong>267°C</strong>
 <span class="desync">Load Capacity:</span> <strong>86%</strong>
 <span class="hack-reveal">Notes:</span>
@@ -51,7 +51,7 @@ Began prep for partial shutdown, but Roylott “talked me through” the metrics
 Perhaps I’m overreacting.</pre>`,
 
     "log 0024": `
-<pre><strong>LOG 0024 — DATE: FEB 1, 2019 – 07:00</strong>
+<pre><strong>LOG 0024</strong>
 <span class="desync">Core Temp:</span> <strong>288°C</strong>
 <span class="desync">Load Capacity:</span> <strong>91%</strong>
 <span class="hack-reveal">Notes:</span>
@@ -60,7 +60,7 @@ Structural integrity is starting to read soft. MacCready cannot handle a critica
 I’ll raise it again—formally, this time. Even Roylott has to see it.</pre>`,
 
     "log 0027": `
-<pre><strong>LOG 0027 — DATE: FEB 4, 2019 – 07:00</strong>
+<pre><strong>LOG 0027</strong>
 <span class="desync">Core Temp:</span> <strong>313°C</strong>
 <span class="desync">Load Capacity:</span> <strong>95%</strong>
 <span class="hack-reveal">Notes:</span>
@@ -69,7 +69,7 @@ Why is no one else treating this seriously? The heat shimmer down there feels al
 I should have filed the shutdown request. I wrote it. Where is it?</pre>`,
 
     "log 0029": `
-<pre><strong>LOG 0029 — DATE: FEB 6, 2019 – 07:00</strong>
+<pre><strong>LOG 0029</strong>
 <span class="desync">Core Temp:</span> <strong>327°C</strong>
 <span class="desync">Load Capacity:</span> <strong>98%</strong>
 <span class="hack-reveal">Notes:</span>
