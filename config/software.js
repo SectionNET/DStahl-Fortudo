@@ -1,47 +1,85 @@
 /* eslint-disable no-inner-declarations, no-nested-ternary, no-sequences, no-unused-vars */
 
 function files() {
-  return `
-    <p><strong>Available files on this terminal:</strong></p>
-    <pre>audit prep
-email draft
-personal
-hr reports</pre>
-  `;
+  return [
+    "<p><strong>Available logs on this terminal:</strong></p>",
+    "<pre>log 0001\nlog 0007\nlog 0015\nlog 0020\nlog 0024\nlog 0027\nlog 0029</pre>"
+  ];
 }
 
 function read(args) {
   if (args.length === 0) {
-    return "<p>Please specify a file to read. Example: <code>read file name</code></p>";
+    return "<p>Please specify a file to read. Example: <code>read log 0001</code></p>";
   }
 
   const fileName = args.join(" ").toLowerCase();
 
   const fileContents = {
-    "audit prep": `<p><strong>audit prep:</strong><br>
-&gt;Q3_Safety_Review_DRAFT.docx<br><br>
-17 near-miss incidents (up from 9 last quarter)<br>
-Crew fatigue remains high. Formal rotation request pending Roylott sign-off.<br>
-Recurring mechanical stress on Winch Assembly B3 – recommend partial shut-down during night cycle.<br>
-Multiple unverified reports of “harmonic tremors” in substructure. Likely due to deep-water pressure and overclocked drills.</p>`,
+    "log 0001": `
+<pre><strong>LOG 0001 — DATE: JAN 12, 2019 – 07:00</strong>
+<span class="desync">Core Temp:</span> <strong>198°C</strong>
+<span class="desync">Load Capacity:</span> <strong>64%</strong>
+<span class="hack-reveal">Notes:</span>
+System stable. Early warming curve shows slight delay on tertiary coolant loop, likely sensor lag. Will monitor.
+Minor corrosion visible on valve 3B. Routine.</pre>`,
 
-    "email draft": `<p><strong>EMAIL – To: Gerald Winestep (unsent)</strong><br>
-Subject: Concerns re: Rig Load Parameters</p>
-<p>Gerald,<br>
-I strongly suggest we reconsider the current extraction schedule. Roylott has bypassed both environmental thresholds and standard crew relief protocols. I know he’s reporting numbers you like, but if an accident occurs, there won’t be a PR line deep enough to bury it.<br><br>
-Regards,<br>
-—P.</p>`,
+    "log 0007": `
+<pre><strong>LOG 0007 — DATE: JAN 17, 2019 – 07:00</strong>
+<span class="desync">Core Temp:</span> <strong>232°C</strong>
+<span class="desync">Load Capacity:</span> <strong>72%</strong>
+<span class="hack-reveal">Notes:</span>
+Thermal lag increasing. Reactor drawing deeper during high drill cycles.
+Recommending we pull MacCready off drill routing rotation—he’s pushing cycle frequencies irregularly.
+Will submit note to Roylott.</pre>`,
 
-    "personal": `<p><strong>NoteToSelf.txt:</strong><br>
-No sleep again. Same sound last night—like cables groaning through water. Checked the structural readouts: no variance.<br><br>
-I’m overreacting. It’s just the wind. The pressure. The stress.<br><br>
-Still. I should ask Kent to run another air quality check. Quietly.</p>`,
+    "log 0015": `
+<pre><strong>LOG 0015 — DATE: JAN 24, 2019 – 07:00</strong>
+<span class="desync">Core Temp:</span> <strong>246°C</strong>
+<span class="desync">Load Capacity:</span> <strong>79%</strong>
+<span class="hack-reveal">Notes:</span>
+Pressure build-up at pump junction 4. Oscillating draw spikes reported.
+Cooling loop 2B required manual override restart.
+MacCready insists “the system can take it”—I’m less sure.</pre>`,
 
-    "hr reports": `<p><strong>Crew_Incidents_June.xlsx:</strong><br>
-McCraig – minor lacerations (cause: “lost balance”)<br>
-Cleaver – absence from duty, claimed “time slipped”<br>
-Logan – requested reassignment, citing “oppressive atmosphere”<br><br>
-Notes column: All within expected norms. No action required.</p>`
+    "log 0020": `
+<pre><strong>LOG 0020 — DATE: JAN 28, 2019 – 07:00</strong>
+<span class="desync">Core Temp:</span> <strong>267°C</strong>
+<span class="desync">Load Capacity:</span> <strong>86%</strong>
+<span class="hack-reveal">Notes:</span>
+Coolant cavitation. Insulation showing signs of breakdown under radiological scan.
+Began prep for partial shutdown, but Roylott “talked me through” the metrics again.
+Perhaps I’m overreacting.</pre>`,
+
+    "log 0024": `
+<pre><strong>LOG 0024 — DATE: FEB 1, 2019 – 07:00</strong>
+<span class="desync">Core Temp:</span> <strong>288°C</strong>
+<span class="desync">Load Capacity:</span> <strong>91%</strong>
+<span class="hack-reveal">Notes:</span>
+These numbers are not fine. Kent: remember you flagged this a week ago.
+Structural integrity is starting to read soft. MacCready cannot handle a critical stop under these pressures.
+I’ll raise it again—formally, this time. Even Roylott has to see it.</pre>`,
+
+    "log 0027": `
+<pre><strong>LOG 0027 — DATE: FEB 4, 2019 – 07:00</strong>
+<span class="desync">Core Temp:</span> <strong>313°C</strong>
+<span class="desync">Load Capacity:</span> <strong>95%</strong>
+<span class="hack-reveal">Notes:</span>
+Sparks near the auxiliary manifold. Gas seeping around pressure ring.
+Why is no one else treating this seriously? The heat shimmer down there feels alive.
+I should have filed the shutdown request. I wrote it. Where is it?</pre>`,
+
+    "log 0029": `
+<pre><strong>LOG 0029 — DATE: FEB 6, 2019 – 07:00</strong>
+<span class="desync">Core Temp:</span> <strong>327°C</strong>
+<span class="desync">Load Capacity:</span> <strong>98%</strong>
+<span class="hack-reveal">Notes:</span>
+[This entry is formatted differently. The language is dispassionate, clinical, and eerily detached.]
+
+System functioning within acceptable parameters.
+Core temperature and load levels are well within theoretical thresholds.
+All readings are optimal. No maintenance required.
+
+—RK</pre>`
   };
 
   return fileContents[fileName] || `<p>No such file found: <strong>${args.join(" ")}</strong></p>`;
@@ -49,14 +87,10 @@ Notes column: All within expected norms. No action required.</p>`
 
 function search(args) {
   const keyword = args.join(' ').toLowerCase();
-  const results = {}; // Currently no indexed terms
-
+  const results = {}; // Empty index
   for (const [key, output] of Object.entries(results)) {
-    if (keyword.includes(key)) {
-      return output;
-    }
+    if (keyword.includes(key)) return output;
   }
-
   return `<p>No results found for keyword: <strong>${keyword}</strong></p>`;
 }
 
@@ -68,9 +102,11 @@ function help(args) {
 clear   date   exit   help   mail   files   read
 </pre>
 <p>You can navigate in the commands usage history using the UP & DOWN arrow keys.</p>
-<p>The TAB key will provide command auto-completion.</p>
-`;
+<p>The TAB key will provide command auto-completion.</p>`;
 }
+
+// Other commands like decrypt, identify, artifact, etc. can remain as-is unless you want them updated.
+
 
 function decrypt(args) {
   if (args.length === 0) {
