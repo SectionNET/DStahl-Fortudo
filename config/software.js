@@ -73,7 +73,6 @@ I should have filed the shutdown request. I wrote it. Where is it?</pre>`,
 <span class="desync">Core Temp:</span> <strong>327°C</strong>
 <span class="desync">Load Capacity:</span> <strong>98%</strong>
 <span class="hack-reveal">Notes:</span>
-[This entry is formatted differently. The language is dispassionate, clinical, and eerily detached.]
 
 System functioning within acceptable parameters.
 Core temperature and load levels are well within theoretical thresholds.
