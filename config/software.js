@@ -76,7 +76,7 @@ I should have filed the shutdown request. I wrote it. Where is it?</pre>`,
 
 System functioning within acceptable parameters.
 Core temperature and load levels are well within theoretical thresholds.
-All readings are optimal. No maintenance required.
+All readings are optimal. No maintenance required. Reactor Control System Access code changed at Roylotts request, new code: 8283
 
 —RK</pre>`
   };
